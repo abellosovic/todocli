@@ -1,0 +1,6 @@
+[run]
+source =
+    todocli
+
+[report]
+ignore_errors = True

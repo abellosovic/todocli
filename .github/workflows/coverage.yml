@@ -1,0 +1,25 @@
+name: 'coverage'
+on:
+    pull_request:
+        branches:
+            - main
+jobs:
+    coverage:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v3
+
+          - uses: actions/setup-python@v4
+            with:
+              python-version: '3.11'
+              cache: 'pip' # caching pip dependencies
+
+          - run: pip install -r requirements_dev.txt
+
+          - run: coverage xml coverage.xml
+
+          - name: Archive code coverage results
+            uses: actions/upload-artifact@v3
+            with:
+              name: coverage.xml
+              path: coverage.xml

@@ -31,7 +31,6 @@ class FormattersTestCase(unittest.TestCase):
         result = send_request("GET", "url")
         self.assertEqual(result, self.data)
 
-
     @patch('requests.get')
     def test_send_request_UNKNOWN(self, mock_requests_get):
         self.assertRaises(MethodNotAllowed, send_request, "UNKNOWN", "url")
