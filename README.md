@@ -1,4 +1,10 @@
-# Pre-requisites
+# todocli
+
+command line tool to interact with a todo list service.
+You can find the service at https://github.com/abellosovic/node-todo.
+
+## Pre-requisites
+- python 3.11
 
 ## Install package
 
