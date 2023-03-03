@@ -68,3 +68,7 @@ def todo_cli():
         args.func(args)
     else:
         parser.print_help()
+
+
+if __name__ == "__main__":
+    todo_cli()

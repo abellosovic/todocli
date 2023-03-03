@@ -17,6 +17,14 @@ class ApiConnectionError(Exception):
         return self.msg
 
 
+class MethodNotAllowed(Exception):
+    def __init__(self, method):
+        self.msg = f"Method not allowed: {method}"
+
+    def __str__(self):
+        return self.msg
+
+
 def send_request(method, url, data=None):
     match method:
         case "GET":
@@ -26,7 +34,7 @@ def send_request(method, url, data=None):
         case "DELETE":
             response = requests.delete(url=url)
         case _:
-            raise Exception
+            raise MethodNotAllowed(method=method)
     if response.status_code != 200:
         raise ApiConnectionError(status_code=response.status_code)
     logger.info(f"Response: {response.json()}")
